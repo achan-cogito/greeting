@@ -12,8 +12,9 @@ on:
       - main
   workflow_dispatch:  # Enables manual triggering
     inputs:
-      description: 'Tag name to trigger the workflow'
-      required: true
+      target_service:
+        description: 'Input a service name (e.g., demo-app)'
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
