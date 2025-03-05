@@ -14,7 +14,6 @@ on:
       description: 'Tag name to trigger the workflow'
       required: true
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -32,10 +31,10 @@ jobs:
       run: go test -v ./...
 
   trigger:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Workflow in admin-service-api-go Repository
+      - name: Trigger Workflow 
         run: |
 
           curl -L \
