@@ -12,7 +12,6 @@ on:
       - main
   workflow_dispatch:  # Enables manual triggering
     inputs:
-      tag_name:
       description: 'Tag name to trigger the workflow'
       required: true
 jobs:
