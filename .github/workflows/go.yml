@@ -17,7 +17,7 @@ on:
         required: true
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
 
@@ -33,9 +33,17 @@ jobs:
       run: go test -v ./...
 
   trigger:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    
 
     steps:
+      - name: install openapi-generator cli
+        run: |
+          mkdir -p ~/bin/openapitools
+          curl https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/bin/utils/openapi-generator-cli.sh > ~/bin/openapitools/openapi-generator-cli
+          chmod u+x ~/bin/openapitools/openapi-generator-cli
+          export PATH=$PATH:~/bin/openapitools/
+          openapi-generator version
       - name: Trigger Workflow 
         run: |
 
